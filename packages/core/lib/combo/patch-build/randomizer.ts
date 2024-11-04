@@ -1025,7 +1025,8 @@ function worldConfig(world: World, settings: Settings): Set<Confvar> {
     MM_PRE_ACTIVATED_OWL_ST: world.resolvedFlags.mmPreActivatedOwls.has('tower'),
     MM_WELL_OPEN: settings.beneathWell === 'open',
     MM_HAMMER: settings.hammerMm,
-    SHARED_HAMMER: settings.sharedHammer
+    SHARED_HAMMER: settings.sharedHammer,
+    OOT_SHUFFLE_EGGS: settings.eggShuffle,
   };
 
   for (const v in exprs) {
