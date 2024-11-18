@@ -130,6 +130,15 @@
 "can_play_cross_tp_shadow": "can_play_cross(OOT_SONG_TP_SHADOW) && ocarina_button_a && ocarina_button_right && ocarina_button_down && ocarina_button_left"
 "can_play_cross_tp_spirit": "can_play_cross(OOT_SONG_TP_SPIRIT) && ocarina_button_a && ocarina_button_right && ocarina_button_down"
 
+# Glitches
+"glitch_equip_swap": "trick(GLITCH_MM_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && (is_child || setting(agelessSticks))))"
+"glitch_equip_swap_anyage": "trick(GLITCH_MM_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && setting(agelessSticks)))"
+"glitch_ocarina_items": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish)"
+"glitch_megaflip": "trick(GLITCH_MM_MEGAFLIP) && has_explosives && has_one_hand_shield"
+"glitch_ISG": "trick(GLITCH_MM_ISG) && has_one_hand_shield && ((has_explosives || has(MASK_KAMARO || has(MASK_BRENMEN)) && has_sticks || can_use_sword"
+"glitch_bomb_hover": "trick(GLITCH_MM_HOVER) && has_explosives && glitch_ISG" 
+
+
 # Misc
 "has_spin_upgrade": "cond(setting(sharedSpinUpgrade), has(SHARED_SPIN_UPGRADE), has(SPIN_UPGRADE))"
 "keaton_grass_easy": "has_sword && has_magic"
