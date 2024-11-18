@@ -136,7 +136,7 @@
 "glitch_ocarina_items": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish)"
 "glitch_megaflip": "trick(GLITCH_MM_MEGAFLIP) && has_explosives && has_one_hand_shield"
 "glitch_ISG": "trick(GLITCH_MM_ISG) && has_one_hand_shield && ((has_explosives || has(MASK_KAMARO || has(MASK_BRENMEN)) && has_sticks || can_use_sword"
-"glitch_bomb_hover": "trick(GLITCH_MM_HOVER) && has_explosives && glitch_ISG" 
+"glitch_bomb_hover": "trick(GLITCH_MM_HOVER) && has_explosives || has_mask_blast && glitch_ISG" 
 
 
 # Misc
