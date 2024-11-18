@@ -291,6 +291,9 @@
 "glitch_equip_swap_anyage": "trick(GLITCH_OOT_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && setting(agelessSticks)))"
 "glitch_ocarina_items": "trick(GLITCH_OOT_OCARINA_ITEMS) && (has_bugs || has_fish)"
 "glitch_megaflip": "trick(GLITCH_OOT_MEGAFLIP) && has_explosives && has_one_hand_shield"
+"glitch_ISG": "trick(GLITCH_OOT_ISG) && has_one_hand_shield && has_sticks || can_use_sword"
+"glitch_bomb_hover": "trick(GLITCH_OOT_HOVER) && has_explosives && glitch_ISG" 
+
 
 # Misc
 "soul_enemy(x)": "(!setting(soulsEnemyOot)) || has(x)"
