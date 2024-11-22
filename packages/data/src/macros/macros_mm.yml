@@ -100,7 +100,7 @@
 "ocarina_button_any2_left": "ocarina_button_left && (ocarina_button_up || ocarina_button_down)"
 "ocarina_button_any2_up": "ocarina_button_up && ocarina_button_down"
 
-"has_ocarina_n(x)": "has(OCARINA, x) || has(SHARED_OCARINA, x)"
+"has_ocarina_n(x)": "glitch_ocarina_items || has(OCARINA, x) || has(SHARED_OCARINA, x)"
 "has_ocarina": "cond(setting(sharedOcarina), cond(setting(fairyOcarinaMm), has_ocarina_n(1), has_ocarina_n(2)), has_ocarina_n(1))"
 "can_play(song)": "has_ocarina && has(song)"
 "can_play_cross(x)": "can_play(x) && setting(crossWarpOot)"
