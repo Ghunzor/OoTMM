@@ -209,7 +209,7 @@
   region: CLOCK_TOWN_SOUTH
   exits:
     "Clock Town Near Clock Tower": "true"
-    "Clock Tower Roof": "after(NIGHT3_AM_12_00) && cond(setting(erMoon), can_play_time || (can_reset_time && (trick(MM_CLOCK_TOWER_WAIT) || can_play_sun)), true)"
+    "Clock Tower Roof": "after(NIGHT3_AM_12_00) && cond(setting(erMoon), can_play_time || (can_reset_time && (trick(MM_CLOCK_TOWER_WAIT) || can_play_sun)), true) || glitch_bomb_hover" 
   locations:
     "Clock Town Platform HP": "true"
 "Clock Town South":
@@ -227,8 +227,8 @@
     CLOCK_TOWN_SCRUB: "has(MOON_TEAR)"
     MAIL_LETTER: "has(LETTER_TO_KAFEI) && before(DAY2_AM_11_30)"
   locations:
-    "Clock Town South Chest Lower": "can_hookshot || (is_adult && can_hookshot_short) || short_hook_anywhere || (has(MASK_DEKU) && event(CLOCK_TOWN_SCRUB)) || trick(MM_SCT_NOTHING) || can_goron_bomb_jump"
-    "Clock Town South Chest Upper": "(can_hookshot || short_hook_anywhere || (has(MASK_DEKU) && event(CLOCK_TOWN_SCRUB)) || (can_goron_bomb_jump && can_hookshot_short)) && final_day"
+    "Clock Town South Chest Lower": "can_hookshot || (is_adult && can_hookshot_short) || short_hook_anywhere || (has(MASK_DEKU) && event(CLOCK_TOWN_SCRUB)) || trick(MM_SCT_NOTHING) || can_goron_bomb_jump || glitch_bomb_hover"
+    "Clock Town South Chest Upper": "(can_hookshot || short_hook_anywhere || (has(MASK_DEKU) && event(CLOCK_TOWN_SCRUB)) || (can_goron_bomb_jump && can_hookshot_short)) || glitch_bomb_hover && final_day"
     "Clock Town Business Scrub": "soul_business_scrub && event(CLOCK_TOWN_SCRUB)"
     "Clock Town Post Box": "has(MASK_POSTMAN)"
     "Clock Town South Wonder Item 1": "hit_target_range_far"
@@ -262,7 +262,7 @@
     "Clock Town East": "true"
     "Clock Town Fairy Fountain": "true"
     "Deku Playground": "true"
-    "Tingle Town": "soul_npc(SOUL_NPC_TINGLE) && is_day && (has_weapon_range || (has_weapon && (trick(MM_NCT_TINGLE) || has_hover_boots)))"
+    "Tingle Town": "soul_npc(SOUL_NPC_TINGLE) && is_day && (has_weapon_range || (has_weapon && (trick(MM_NCT_TINGLE) || has_hover_boots))) || (glitch_bomb_hover && has_sword)"
     "Clock Town North Postbox": "true"
   events:
     HIDE_SEEK1: "soul_bombers && has_weapon_range && first_day"
@@ -332,7 +332,7 @@
     "Stock Pot Inn": "has(ROOM_KEY) || between(DAY1_AM_08_00, NIGHT1_PM_08_00) || between(DAY2_AM_08_00, NIGHT2_PM_08_00) || after(DAY3_AM_08_00)"
     "Clock Town East SPI Roof": "has(MASK_DEKU) || short_hook_anywhere || has_hover_boots || event(SPI_ROOF_FARORE)"
     "Milk Bar": "between(DAY1_AM_10_00, NIGHT1_PM_09_00) || between(DAY2_AM_10_00, NIGHT2_PM_09_00) || between(DAY3_AM_10_00, NIGHT3_PM_09_00) || (has(MASK_ROMANI) && (between(NIGHT1_PM_10_00, NIGHT1_AM_05_00) || between(NIGHT2_PM_10_00, NIGHT2_AM_05_00) || after(NIGHT3_PM_10_00)))"
-    "Astral Observatory Passage": "event(BOMBER_CODE) || event(GUESS_BOMBER) || trick(MM_BOMBER_BACKFLIP) || short_hook_anywhere"
+    "Astral Observatory Passage": "event(BOMBER_CODE) || event(GUESS_BOMBER) || trick(MM_BOMBER_BACKFLIP) || short_hook_anywhere || glitch_bomb_hover"
     "Clock Town East Postbox": "true"
   events:
     BOMBERS_EAST1: "event(HIDE_SEEK1)"
@@ -397,7 +397,7 @@
   region: LAUNDRY_POOL
   exits:
     "Clock Town South": "true"
-    "Kafei Hideout": "(event(MAIL_LETTER) && between(DAY2_PM_02_00, NIGHT2_PM_10_00)) || (event(MEET_KAFEI) && between(DAY3_PM_01_00, NIGHT3_PM_10_00))"
+    "Kafei Hideout": "(event(MAIL_LETTER) && between(DAY2_PM_02_00, NIGHT2_PM_10_00)) || (event(MEET_KAFEI) && between(DAY3_PM_01_00, NIGHT3_PM_10_00)) || glitch_bomb_hover"
   events:
     FROG_1: "has(MASK_DON_GERO)"
     MAGIC: "true"
@@ -592,7 +592,7 @@
     "Stock Pot Inn Couple's Mask": "event(SUN_MASK) && event(DELIVER_PENDANT) && event(MEET_ANJU) && after(NIGHT3_AM_04_00)"
     "Stock Pot Inn Grandma HP 1": "soul_old_hag && has(MASK_ALL_NIGHT) && (is_day1 || is_day2)"
     "Stock Pot Inn Grandma HP 2": "soul_old_hag && has(MASK_ALL_NIGHT) && (is_day1 || is_day2)"
-    "Stock Pot Inn ??? HP": "soul_npc(SOUL_NPC_TOILET_HAND) && cond(setting(erIndoorsExtra), has_paper && midnight, has_paper && midnight && (clock_night3 || has(ROOM_KEY) || has(MASK_DEKU) || has_hover_boots || event(SPI_ROOF_FARORE) || trick(MM_STOCK_POT_WAIT)))"
+    "Stock Pot Inn ??? HP": "soul_npc(SOUL_NPC_TOILET_HAND) && cond(setting(erIndoorsExtra), has_paper && midnight, has_paper && midnight && (clock_night3 || has(ROOM_KEY) || has(MASK_DEKU) || has_hover_boots || event(SPI_ROOF_FARORE) || trick(MM_STOCK_POT_WAIT || glitch_bomb_hover)))"
     "Stock Pot Inn Wonder Item 1": "has_mask_zora && has_magic"
     "Stock Pot Inn Wonder Item 2": "has_mask_zora && has_magic"
     "Stock Pot Inn Wonder Item 3": "has_mask_zora && has_magic"
@@ -630,7 +630,7 @@
 "Astral Observatory Balcony":
   region: TERMINA_FIELD
   exits:
-    "Termina Field": "can_use_beans || short_hook_anywhere || (can_goron_bomb_jump && has_bombs)"
+    "Termina Field": "can_use_beans || short_hook_anywhere || (can_goron_bomb_jump && has_bombs) || glitch_bomb_hover"
     "Astral Observatory": "true"
   events:
     FAIRY: "can_get_gossip_fairy"
@@ -654,11 +654,11 @@
     "Clock Town East": "true"
     "Clock Town West": "true"
     "Road to Southern Swamp": "true"
-    "Behind Large Icicles": "has_arrows || (has_hot_water_distance && has(OWL_CLOCK_TOWN)) || has_hot_water_farore || has_hot_water_er || short_hook_anywhere || can_use_din"
+    "Behind Large Icicles": "has_arrows || (has_hot_water_distance && has(OWL_CLOCK_TOWN)) || has_hot_water_farore || has_hot_water_er || short_hook_anywhere || can_use_din ||  glitch_isg"
     "Milk Road": "true"
-    "Great Bay Fence": "can_play_epona || (can_goron_bomb_jump && has_bombs) || short_hook_anywhere"
+    "Great Bay Fence": "can_play_epona || (can_goron_bomb_jump && has_bombs) || short_hook_anywhere ||  glitch_bomb_hover"
     "Road to Ikana Front": "true"
-    "Astral Observatory Balcony": "has(MASK_DEKU) || short_hook_anywhere || (can_goron_bomb_jump && has_bombs)"
+    "Astral Observatory Balcony": "has(MASK_DEKU) || short_hook_anywhere || (can_goron_bomb_jump && has_bombs) ||  glitch_bomb_hover"
     "Grass Grotto": "true"
     "Peahat Grotto": "true"
     "Bio Baba Grotto": "can_break_boulders"
@@ -676,7 +676,7 @@
     "Termina Field Tall Grass Chest": "true"
     "Termina Field Tree Stump Chest": "can_hookshot_short || can_use_beans"
     "Termina Field Kamaro Mask": "soul_citizen && can_play_healing && midnight"
-    "Termina Field Pot": "can_use_beans || has_bow"
+    "Termina Field Pot": "can_use_beans || has_bow ||  glitch_bomb_hover"
     "Termina Field Grass Pack 01 Grass 01": "true"
     "Termina Field Grass Pack 01 Grass 02": "true"
     "Termina Field Grass Pack 01 Grass 03": "true"
@@ -899,15 +899,15 @@
     "Termina Field Wonder Item Grass 3": "true"
     "Termina Field Wonder Item Grass 4": "true"
     "Termina Field Wonder Item Grass 5": "true"
-    "Termina Field Wonder Item Hollow Trunk": "goron_fast_roll || has(MASK_DEKU)"
+    "Termina Field Wonder Item Hollow Trunk": "goron_fast_roll || has(MASK_DEKU) ||  glitch_bomb_hover"
     "Termina Field Wonder Item Fountains 1": "true"
     "Termina Field Wonder Item Fountains 2": "true"
     "Termina Field Wonder Item North Ramp": "goron_fast_roll"
     "Termina Field Wonder Item West Ramp": "true"
     "Termina Field Wonder Item South West Ramp": "true"
-    "Termina Field Wonder Item Shell 1": "hit_target_range_close"
-    "Termina Field Wonder Item Shell 2": "hit_target_range_close"
-    "Termina Field Wonder Item Shell 3": "hit_target_range_close"
+    "Termina Field Wonder Item Shell 1": "hit_target_range_close ||  glitch_bomb_hover"
+    "Termina Field Wonder Item Shell 2": "hit_target_range_close ||  glitch_bomb_hover"
+    "Termina Field Wonder Item Shell 3": "hit_target_range_close ||  glitch_bomb_hover"
     "Termina Field Wonder Item Shell Side 1": "hit_target_range_melee"
     "Termina Field Wonder Item Shell Side 2": "hit_target_range_melee"
     "Termina Field Wonder Item Shell Side 3": "hit_target_range_melee"
@@ -986,7 +986,7 @@
     "Termina Field Bio Baba Grotto": "has_mask_zora || ((underwater_walking || can_dive_big || (trick(MM_BIO_BABA_LUCK) && soul_enemy(SOUL_ENEMY_BIO_BABA))) && (has_weapon_range || (has_bombs && soul_enemy(SOUL_ENEMY_BIO_BABA)) || (has_bombchu && trick(MM_BIO_BABA_CHU))))"
     "Bio Baba Grotto Grass 1": "true"
     "Bio Baba Grotto Grass 2": "true"
-    "Termina Field Bio Baba Grotto Hive Middle": "has_mask_zora || ((break_hive || (has_bombs && soul_enemy(SOUL_ENEMY_BIO_BABA)) || (has_bombchu && trick(MM_BIO_BABA_CHU))) && (underwater_walking || can_dive_big || hookshot_anywhere || (short_hook_anywhere && soul_enemy(SOUL_ENEMY_BIO_BABA))))"
+    "Termina Field Bio Baba Grotto Hive Middle": "has_mask_zora || ((break_hive || (has_bombs && soul_enemy(SOUL_ENEMY_BIO_BABA)) || (has_bombchu && trick(MM_BIO_BABA_CHU))) && (underwater_walking || can_dive_big || hookshot_anywhere || (short_hook_anywhere && soul_enemy(SOUL_ENEMY_BIO_BABA)))) ||"
     "Termina Field Bio Baba Grotto Hive Left": "has_mask_zora || ((break_hive || (has_bombs && soul_enemy(SOUL_ENEMY_BIO_BABA)) || (has_bombchu && trick(MM_BIO_BABA_CHU))) && (underwater_walking || can_dive_big || short_hook_anywhere))"
 "Dodongo Grotto":
   region: ENTRANCE
@@ -1120,7 +1120,7 @@
     "Termina Field Cow Grotto Grass 70": "true"
     "Termina Field Cow Grotto Grass 71": "true"
     "Termina Field Cow Grotto Grass 72": "true"
-    "Termina Field Cow Grotto Hive": "break_hive || (has_bombchu && trick(MM_HIVE_BOMBCHU))"
+    "Termina Field Cow Grotto Hive": "break_hive || (has_bombchu && trick(MM_HIVE_BOMBCHU)) ||  glitch_bomb_hover"
     "Termina Field Cow Grotto Butterfly 1": "has_sticks"
     "Termina Field Cow Grotto Butterfly 2": "has_sticks"
     "Termina Field Cow Grotto Butterfly 3": "has_sticks"
@@ -1129,7 +1129,7 @@
   events:
     BUGS: "true"
     MUSHROOM: "has(MASK_SCENTS)"
-    SWAMP_SONG: "has_ocarina && ((has_mask_goron && can_play_goron) || (has(MASK_DEKU) && can_play_awakening) || (has_mask_zora && can_play_zora))"
+    SWAMP_SONG: "has_ocarina || glitch_ocarina_items && ((has_mask_goron && can_play_goron) || (has(MASK_DEKU) && can_play_awakening) || (has_mask_zora && can_play_zora))"
     FAIRY: "can_get_gossip_fairy"
   exits:
     "Termina Field": "true"
@@ -1145,7 +1145,7 @@
   region: ENTRANCE
   events:
     BUGS: "true"
-    MOUNTAIN_SONG: "has_ocarina && ((has_mask_goron && can_play_goron) || (has(MASK_DEKU) && can_play_awakening) || (has_mask_zora && can_play_zora))"
+    MOUNTAIN_SONG: "has_ocarina || glitch_ocarina_items && ((has_mask_goron && can_play_goron) || (has(MASK_DEKU) && can_play_awakening) || (has_mask_zora && can_play_zora))"
     FAIRY: "can_get_gossip_fairy"
   exits:
     "Termina Field": "true"
@@ -1166,7 +1166,7 @@
     ARROWS: "true"
     BUGS: "true"
     MUSHROOM: "has(MASK_SCENTS)"
-    OCEAN_SONG: "has_ocarina && ((has_mask_goron && can_play_goron) || (has(MASK_DEKU) && can_play_awakening) || (has_mask_zora && can_play_zora))"
+    OCEAN_SONG: "has_ocarina || glitch_ocarina_items && ((has_mask_goron && can_play_goron) || (has(MASK_DEKU) && can_play_awakening) || (has_mask_zora && can_play_zora))"
     FAIRY: "can_get_gossip_fairy"
   exits:
     "Termina Field": "true"
@@ -1195,7 +1195,7 @@
     ARROWS: "true"
     BUGS: "true"
     MUSHROOM: "has(MASK_SCENTS)"
-    CANYON_SONG: "has_ocarina && ((has_mask_goron && can_play_goron) || (has(MASK_DEKU) && can_play_awakening) || (has_mask_zora && can_play_zora))"
+    CANYON_SONG: "has_ocarina || glitch_ocarina_items && ((has_mask_goron && can_play_goron) || (has(MASK_DEKU) && can_play_awakening) || (has_mask_zora && can_play_zora))"
     FAIRY: "can_get_gossip_fairy"
   exits:
     "Termina Field": "true"
@@ -1231,9 +1231,9 @@
     "Termina Field": "true"
     "Swamp Archery": "before(NIGHT1_PM_10_00) || between(DAY2_AM_06_00, NIGHT2_PM_10_00) || between(DAY3_AM_06_00, NIGHT3_PM_10_00)"
     "Road to Southern Swamp Grotto": "true"
-    "Tingle Swamp": "soul_npc(SOUL_NPC_TINGLE) && has_weapon_range"
+    "Tingle Swamp": "soul_npc(SOUL_NPC_TINGLE) && has_weapon_range || glitch_bomb_hover"
   locations:
-    "Road to Southern Swamp HP": "has_weapon_range || has_bombchu"
+    "Road to Southern Swamp HP": "has_weapon_range || has_bombchu || glitch_bomb_hover" 
     "Road to Southern Swamp Grass Pack 1 Grass 01": "true"
     "Road to Southern Swamp Grass Pack 1 Grass 02": "true"
     "Road to Southern Swamp Grass Pack 1 Grass 03": "true"
@@ -1301,7 +1301,7 @@
   exits:
     "Road to Southern Swamp": "true"
     "Tourist Information": "true"
-    "Swamp Back": "((event(BOAT_RIDE) || has_arrows || can_hookshot_short || can_use_din) && (has(MASK_DEKU) || has_hover_boots || can_use_nayru || is_adult)) || is_swamp_cleared || has_mask_zora"
+    "Swamp Back": "((event(BOAT_RIDE) || has_arrows || can_hookshot_short || can_use_din) && (has(MASK_DEKU) || has_hover_boots || can_use_nayru || is_adult)) || is_swamp_cleared || has_mask_zora || has_weapon_range && glitch_bomb_hover"
     "Swamp Potion Shop": "true"
     "Woods of Mystery": "true"
     "Owl Swamp": "true"
@@ -1318,7 +1318,7 @@
     WATER: "true"
     FAIRY: "true"
   locations:
-    "Southern Swamp HP": "(has(DEED_LAND) && has(MASK_DEKU)) || (trick(MM_SOUTHERN_SWAMP_SCRUB_HP_GORON) && has_mask_goron) || short_hook_anywhere"
+    "Southern Swamp HP": "(has(DEED_LAND) && has(MASK_DEKU)) || (trick(MM_SOUTHERN_SWAMP_SCRUB_HP_GORON) && has_mask_goron) || short_hook_anywhere || glitch_bomb_hover"
     "Southern Swamp Scrub Deed": "soul_business_scrub && has(DEED_LAND)"
     "Southern Swamp Scrub Shop": "soul_business_scrub && has(MASK_DEKU) && can_use_wallet(1)"
     "Southern Swamp Pot 1": "true"
@@ -1358,7 +1358,7 @@
     "Southern Swamp Grass Near Witch 2": "true"
     "Southern Swamp Rupee 1": "has(MASK_DEKU) || is_tall || short_hook_anywhere || has_hover_boots"
     "Southern Swamp Rupee 2": "has(MASK_DEKU) || is_tall || short_hook_anywhere || has_hover_boots"
-    "Southern Swamp Hive": "is_swamp_poisoned && (has_mask_zora || can_use_deku_bubble || has_arrows || can_hookshot || ((is_adult || has_hover_boots) && (can_hookshot_short || (has_bombchu && trick(MM_HIVE_BOMBCHU)))))"
+    "Southern Swamp Hive": "is_swamp_poisoned && (has_mask_zora || can_use_deku_bubble || has_arrows || can_hookshot || ((is_adult || has_hover_boots) && (can_hookshot_short || (has_bombchu && trick(MM_HIVE_BOMBCHU))))) || glitch_bomb_hover"
   gossip:
     "Southern Swamp Gossip": "true"
 "Swamp Back":
@@ -1367,13 +1367,13 @@
     PICTURE_SWAMP: "has(PICTOGRAPH_BOX)"
     PICTURE_BIG_OCTO: "has(PICTOGRAPH_BOX) && soul_octorok"
   exits:
-    "Swamp Front": "((event(BOAT_RIDE) || has_arrows) && (has(MASK_DEKU) || has_hover_boots || can_use_nayru || is_adult || has_mask_goron)) || (has_hover_boots && (can_hookshot_short || can_use_din)) || (is_adult && (can_use_din || (can_use_nayru && can_hookshot_short))) || is_swamp_cleared || has_mask_zora"
+    "Swamp Front": "((event(BOAT_RIDE) || has_arrows) && (has(MASK_DEKU) || has_hover_boots || can_use_nayru || is_adult || has_mask_goron)) || (has_hover_boots && (can_hookshot_short || can_use_din)) || (is_adult && (can_use_din || (can_use_nayru && can_hookshot_short))) || is_swamp_cleared || has_mask_zora ||  has_weapon_range && glitch_bomb_hover"
     "Deku Palace Front": "true"
-    "Near Swamp Spider House": "has(MASK_DEKU) || is_tall || is_swamp_cleared || short_hook_anywhere || can_use_nayru || has_hover_boots"
-    "Swamp Canopy Back": "is_swamp_cleared || short_hook_anywhere"
-    "Swamp Canopy Front": "short_hook_anywhere"
+    "Near Swamp Spider House": "has(MASK_DEKU) || is_tall || is_swamp_cleared || short_hook_anywhere || can_use_nayru || has_hover_boots|| glitch_bomb_hover"
+    "Swamp Canopy Back": "is_swamp_cleared || short_hook_anywhere || glitch_bomb_hover"
+    "Swamp Canopy Front": "short_hook_anywhere || glitch_bomb_hover"
   locations:
-    "Southern Swamp Song of Soaring": "has_mask_zora && has_explosives && trick(MM_SOARING_ZORA)" # add adult to this trick?
+    "Southern Swamp Song of Soaring": "has_mask_zora && has_explosives && trick(MM_SOARING_ZORA) || glitch_bomb_hover" # add adult to this trick?
 "Near Swamp Spider House":
   region: SOUTHERN_SWAMP
   exits:
@@ -1386,8 +1386,8 @@
   events:
     MUSHROOM: "has(MASK_SCENTS)"
   exits:
-    "Swamp Front": "((has_arrows || can_hookshot || event(BOAT_RIDE)) && (has_mask_goron || is_tall || can_use_nayru)) || (is_adult && can_use_din)"
-    "Near Swamp Spider House": "has(MASK_DEKU) || is_tall || is_swamp_cleared || can_hookshot_short || can_use_nayru || has_hover_boots"
+    "Swamp Front": "((has_arrows || can_hookshot || event(BOAT_RIDE)) && (has_mask_goron || is_tall || can_use_nayru)) || (is_adult && can_use_din) || glitch_bomb_hover"
+    "Near Swamp Spider House": "has(MASK_DEKU) || is_tall || is_swamp_cleared || can_hookshot_short || can_use_nayru || has_hover_boots || glitch_bomb_hover"
     "Southern Swamp Grotto": "true"
     "Swamp Canopy Front": "short_hook_anywhere"
 "Southern Swamp Grotto":
@@ -1521,10 +1521,10 @@
   region: DEKU_PALACE
   exits:
     "Swamp Back": "true"
-    "Deku Palace Cliff": "has(MASK_DEKU) || short_hook_anywhere"
-    "Near Deku Shrine": "is_swamp_cleared || (can_use_nayru && (has_mask_zora || (is_adult && (has_arrows || can_hookshot_short || can_use_din)))) || (has_hover_boots && (has_arrows || can_hookshot_short || can_use_din))"
-    "Deku Palace Main": "has(MASK_DEKU) || trick(MM_PALACE_GUARD_SKIP) || short_hook_anywhere"
-    "Deku Palace Upper": "(is_swamp_cleared || has(MASK_DEKU) || can_use_nayru) && can_use_beans"
+    "Deku Palace Cliff": "has(MASK_DEKU) || short_hook_anywhere || glitch_bomb_hover"
+    "Near Deku Shrine": "is_swamp_cleared || (can_use_nayru && (has_mask_zora || (is_adult && (has_arrows || can_hookshot_short || can_use_din)))) || (has_hover_boots && (has_arrows || can_hookshot_short || can_use_din)) || glitch_bomb_hover"
+    "Deku Palace Main": "has(MASK_DEKU) || trick(MM_PALACE_GUARD_SKIP) || short_hook_anywhere || glitch_bomb_hover"
+    "Deku Palace Upper": "(is_swamp_cleared || has(MASK_DEKU) || can_use_nayru) && can_use_beans || glitch_bomb_hover"
   events:
     NUTS: "soul_deku_baba && (has(MASK_DEKU) || short_hook_anywhere || ((is_swamp_cleared || has_hover_boots) && (can_fight || has_arrows || has_explosives || can_hookshot_short || can_hammer)))"
 "Deku Palace Main":
@@ -1562,6 +1562,7 @@
     "Deku Palace Rupee Left Far 1": "is_child || has(MASK_DEKU) || trick(MM_PALACE_BEAN_SKIP)"
     "Deku Palace Rupee Left Far 2": "is_child || has(MASK_DEKU) || trick(MM_PALACE_BEAN_SKIP)"
     "Deku Palace Rupee Left Far 3": "is_child || has(MASK_DEKU) || trick(MM_PALACE_BEAN_SKIP)"
+    #"Deku Palace OOB Rupee: glitch_bomb_hover" 
 "Deku Palace Upper":
   region: DEKU_PALACE
   events:
@@ -1577,15 +1578,15 @@
   region: DEKU_PALACE
   exits:
     "Deku Palace Main": "true"
-    "Deku Palace Cage": "event(RETURN_PRINCESS) && short_hook_anywhere"
+    "Deku Palace Cage": "event(RETURN_PRINCESS) && short_hook_anywhere ||  glitch_bomb_hover"
   events:
     PICTURE_DEKU_KING: "has(PICTOGRAPH_BOX) && has(MASK_DEKU) && soul_npc(SOUL_NPC_DEKU_KING)"
-    RETURN_PRINCESS: "is_swamp_cleared && has_deku_princess && has(MASK_DEKU) && soul_npc(SOUL_NPC_DEKU_KING)"
+    RETURN_PRINCESS: "is_swamp_cleared && has_deku_princess && has(MASK_DEKU) ||  glitch_bomb_hover && soul_npc(SOUL_NPC_DEKU_KING)"
 "Deku Palace Near Cage":
   region: DEKU_PALACE
   exits:
     "Deku Palace Main": "true"
-    "Deku Palace Upper": "has(MASK_DEKU) || short_hook_anywhere"
+    "Deku Palace Upper": "has(MASK_DEKU) || short_hook_anywhere ||  glitch_bomb_hover"
     "Deku Palace Cage": "true"
 "Deku Palace Cage":
   region: DEKU_PALACE
@@ -1606,7 +1607,7 @@
     RUPEES: "true"
     WATER: "true"
   locations:
-    "Deku Palace Grotto Chest": "can_use_beans || can_hookshot_short"
+    "Deku Palace Grotto Chest": "can_use_beans || can_hookshot_short ||  glitch_bomb_hover"
     "Deku Palace Grotto Grass 01": "true"
     "Deku Palace Grotto Grass 02": "true"
     "Deku Palace Grotto Grass 03": "true"
@@ -1631,16 +1632,16 @@
 "Deku Palace Cliff":
   region: DEKU_PALACE
   exits:
-    "Deku Palace Front": "has(MASK_DEKU) || is_swamp_cleared || short_hook_anywhere || can_use_nayru || has_hover_boots"
+    "Deku Palace Front": "has(MASK_DEKU) || is_swamp_cleared || short_hook_anywhere || can_use_nayru || has_hover_boots ||  glitch_bomb_hover"
     "Swamp Canopy Front": "true"
 "Swamp Canopy Front":
   region: SOUTHERN_SWAMP
   exits:
-    "Swamp Back": "short_hook_anywhere || has(MASK_DEKU) || is_tall || has_hover_boots"
-    "Near Swamp Spider House": "short_hook_anywhere || has(MASK_DEKU) || is_tall || has_hover_boots"
+    "Swamp Back": "short_hook_anywhere || has(MASK_DEKU) || is_tall || has_hover_boots ||  glitch_bomb_hover"
+    "Near Swamp Spider House": "short_hook_anywhere || has(MASK_DEKU) || is_tall || has_hover_boots ||  glitch_bomb_hover"
     "Near Swamp Grotto": "true"
     "Deku Palace Cliff": "true"
-    "Swamp Canopy Back": "has(MASK_DEKU) || short_hook_anywhere"
+    "Swamp Canopy Back": "has(MASK_DEKU) || short_hook_anywhere ||  glitch_bomb_hover"
 "Swamp Canopy Back":
   region: SOUTHERN_SWAMP
   exits:
@@ -1656,20 +1657,20 @@
     MAGIC: "true"
   exits:
     "Swamp Canopy Back": "true"
-    "Woodfall Shrine": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || hookshot_anywhere"
+    "Woodfall Shrine": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || hookshot_anywhere ||  glitch_bomb_hover"
     "Woodfall Temple Princess Jail": "is_swamp_cleared && woodfall_raised"
-    "Woodfall Near Fairy Fountain": "(is_swamp_cleared || can_use_nayru) && short_hook_anywhere"
+    "Woodfall Near Fairy Fountain": "(is_swamp_cleared || can_use_nayru) && short_hook_anywhere ||  glitch_bomb_hover"
   locations:
-    "Woodfall Entrance Chest": "has(MASK_DEKU) || can_hookshot || is_swamp_cleared || can_use_nayru || has_hover_boots"
-    "Woodfall HP Chest": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || can_hookshot || (is_adult && can_hookshot_short && (is_swamp_cleared || can_use_nayru))"
-    "Woodfall Near Owl Chest": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || (is_swamp_cleared && can_hookshot) || (is_adult && can_hookshot_short && (is_swamp_cleared || can_use_nayru)) || hookshot_anywhere"
+    "Woodfall Entrance Chest": "has(MASK_DEKU) || can_hookshot || is_swamp_cleared || can_use_nayru || has_hover_boots ||  glitch_bomb_hover"
+    "Woodfall HP Chest": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || can_hookshot || (is_adult && can_hookshot_short && (is_swamp_cleared || can_use_nayru)) ||  glitch_bomb_hover"
+    "Woodfall Near Owl Chest": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || (is_swamp_cleared && can_hookshot) || (is_adult && can_hookshot_short && (is_swamp_cleared || can_use_nayru)) || hookshot_anywhere ||  glitch_bomb_hover"
     "Woodfall Grass 1": "true"
     "Woodfall Grass 2": "true"
     "Woodfall Grass 3": "true"
     "Woodfall Grass 4": "true"
     "Woodfall Grass 5": "true"
     "Woodfall Grass 6": "true"
-    "Woodfall Rupee": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || hookshot_anywhere || has_hover_boots"
+    "Woodfall Rupee": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || hookshot_anywhere || has_hover_boots ||  glitch_bomb_hover"
 "Woodfall Front of Temple":
   region: WOODFALL
   exits:
@@ -1679,22 +1680,22 @@
 "Woodfall Shrine":
   region: WOODFALL
   exits:
-    "Woodfall": "(has(MASK_DEKU) && soul_deku_scrub) || is_swamp_cleared || hookshot_anywhere || can_use_nayru"
-    "Woodfall Near Fairy Fountain": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared || short_hook_anywhere)) || hookshot_anywhere"
-    "Woodfall Front of Temple": "woodfall_raised && (has(MASK_DEKU) || hookshot_anywhere)"
+    "Woodfall": "(has(MASK_DEKU) && soul_deku_scrub) || is_swamp_cleared || hookshot_anywhere || can_use_nayru ||  glitch_bomb_hover"
+    "Woodfall Near Fairy Fountain": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared || short_hook_anywhere)) || hookshot_anywhere ||  glitch_bomb_hover"
+    "Woodfall Front of Temple": "woodfall_raised && (has(MASK_DEKU) || hookshot_anywhere) ||  glitch_bomb_hover"
     "Owl Woodfall": "true"
   events:
     OPEN_WOODFALL_TEMPLE: "has(MASK_DEKU) && can_play_awakening"
   locations:
-    "Woodfall Near Owl Chest": "short_hook_anywhere || (has_hover_boots && has_mask_bunny && has_weapon && trick(MM_WF_SHRINE_HOVERS))"
+    "Woodfall Near Owl Chest": "short_hook_anywhere || (has_hover_boots && has_mask_bunny && has_weapon && trick(MM_WF_SHRINE_HOVERS)) ||  glitch_bomb_hover"
 "Woodfall Near Fairy Fountain":
   region: WOODFALL
   exits:
-    "Woodfall": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || is_swamp_cleared || hookshot_anywhere || can_use_nayru"
-    "Woodfall Shrine": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || hookshot_anywhere"
+    "Woodfall": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || is_swamp_cleared || hookshot_anywhere || can_use_nayru ||  glitch_bomb_hover"
+    "Woodfall Shrine": "(has(MASK_DEKU) && (soul_deku_scrub || is_swamp_cleared)) || hookshot_anywhere ||  glitch_bomb_hover"
     "Woodfall Fairy Fountain": "true"
   locations:
-    "Woodfall Near Owl Chest": "can_hookshot || (is_adult && can_hookshot_short && (is_swamp_cleared || can_use_nayru))"
+    "Woodfall Near Owl Chest": "can_hookshot || (is_adult && can_hookshot_short && (is_swamp_cleared || can_use_nayru)) || glitch_bomb_hover"
 "Woodfall Fairy Fountain":
   region: ENTRANCE
   exits:
@@ -1704,7 +1705,7 @@
 "Near Deku Shrine":
   region: DEKU_PALACE
   exits:
-    "Deku Palace Front": "is_swamp_cleared || has(MASK_DEKU) || can_use_nayru || has_hover_boots"
+    "Deku Palace Front": "is_swamp_cleared || has(MASK_DEKU) || can_use_nayru || has_hover_boots ||  glitch_bomb_hover"
     "Deku Shrine": "true"
 "Deku Shrine":
   region: BUTLER_RACE
