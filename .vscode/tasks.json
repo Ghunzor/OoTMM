@@ -3,7 +3,7 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "start:core:debug",
+			"script": "start:core:config",
 			"problemMatcher": {
         "base": "$gcc",
       },
@@ -11,11 +11,19 @@
 		},
     {
 			"type": "npm",
-			"script": "serve",
+			"script": "gui:dev",
 			"problemMatcher": {
         "base": "$gcc",
       },
-			"label": "Start Web",
+			"label": "Start Web Generator",
+		},
+    {
+			"type": "npm",
+			"script": "web:dev",
+			"problemMatcher": {
+        "base": "$gcc",
+      },
+			"label": "Start Website",
 		}
 	]
 }

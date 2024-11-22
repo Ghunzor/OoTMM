@@ -16,6 +16,7 @@
 
 /* Grass hooks */
 ObjGrass* gObjGrass;
+static u8 sNeedsScreenClear;
 
 void ObjGrass_GetID(int* dstPackId, int* dstBushId, ObjGrassElement* grass)
 {
@@ -711,7 +712,21 @@ void hookPlay_Init(PlayState* play)
     }
 }
 
-void Play_UpdateWrapper(PlayState* play)
+void Play_DrawMainWrapper(PlayState* play)
+{
+    if (sNeedsScreenClear)
+    {
+        func_8012CF0C(play->state.gfxCtx, true, true, 0, 0, 0);
+        sNeedsScreenClear--;
+        return;
+    }
+
+    Play_DrawMain(play);
+}
+
+PATCH_CALL(0x80168f48, Play_DrawMainWrapper);
+
+void Play_MainWrapper(PlayState* play)
 {
     Player* link;
     /* Auto-press A during credits */
@@ -726,7 +741,7 @@ void Play_UpdateWrapper(PlayState* play)
     link = GET_PLAYER(play);
     Player_TryUpdateForm(link, play);
     Multi_Update(play);
-    Play_Update(play);
+    Play_Main(play);
     Play_CheckRoomChangeHook(play);
     Audio_DisplayMusicName(play);
     Debug_Update();
@@ -873,7 +888,6 @@ void Play_FastInit(GameState* gs)
     /* Fixup the scene/setup */
     fixupOriginalSceneSetup();
 
-
     /* Handle shuffled entrance */
     switch (gSave.entrance)
     {
@@ -887,4 +901,5 @@ void Play_FastInit(GameState* gs)
 
     /* Finished */
     gComboCtx.valid = 0;
+    sNeedsScreenClear = 2;
 }

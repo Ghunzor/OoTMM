@@ -1,0 +1,7 @@
+[build]
+  command = "echo 'No build step'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    access-control-allow-origin = "*"

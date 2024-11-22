@@ -1,29 +1,33 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
-	"name": "Existing Dockerfile",
+	"name": "OoTMM Dev Container",
 	"build": {
 		// Sets the run context to one level up instead of the .devcontainer folder.
 		"context": "..",
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-		"dockerfile": "../Dockerfile"
+		"dockerfile": "../Dockerfile.devcontainer"
 	},
-
+  	"remoteUser": "node",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	// Uncomment the next line to run commands Runafter the container is created.
+	"postCreateCommand": "./scripts/devcontainer-setup.sh",
 
-	// Uncomment the next line to run commands after the container is created.
-	"postCreateCommand": "npm i && touch packages/core/config.yml",
+	"runArgs": ["--sysctl", "net.ipv6.conf.all.disable_ipv6=1"],
+	"remoteEnv": {
+		"NX_DAEMON": "true"
+	},
 
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"ms-vscode.cpptools-extension-pack",
-        "EditorConfig.EditorConfig"
+				"EditorConfig.EditorConfig",
+				"redhat.vscode-yaml",
+				"mechatroner.rainbow-csv"
 			]
 		}
 	},
@@ -31,6 +35,6 @@
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
 	"mounts": [
-		"source=${localEnv:HOME}${localEnv:USERPROFILE}/OoTMM,target=${containerWorkspaceFolder}/packages/core/out,type=bind,consistency=cached"
+		//"source=${localEnv:HOME}${localEnv:USERPROFILE}/OoTMM,target=${containerWorkspaceFolder}/packages/core/out,type=bind,consistency=cached"
 	]
 }

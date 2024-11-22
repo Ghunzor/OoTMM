@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { Options } from '../options';
 import { bufReadU32BE, bufWriteU16BE } from './buffer';
+import { FileResolver } from '../file-resolver';
 
 // import { PNG } from 'pngjs'
 
 // let PNG: any = null;
-// if (!process.env.BROWSER) {
+// if (!process.env.__IS_BROWSER__) {
 //   PNG = require('pngjs').PNG;
 // };
 
@@ -77,9 +77,9 @@ const parsePngBitmask = async (data: Uint8Array) => {
   return bitmask;
 };
 
-export const png = async (opts: Options, filename: string, mode: 'rgba32' | 'rgba16' | 'i4' | 'bitmask') => {
-  if (process.env.BROWSER) {
-    return opts.resolver!.fetch(`${filename}.bin`);
+export const png = async (filename: string, mode: 'rgba32' | 'rgba16' | 'i4' | 'bitmask') => {
+  if (process.env.__IS_BROWSER__) {
+    return new FileResolver().fetch(`${filename}.bin`);
   } else {
     const data = await fs.promises.readFile(__dirname + '/../../../data/assets/' + filename + '.png').then((d) => new Uint8Array(d.buffer, d.byteOffset, d.byteLength));
     let pngBuffer: Uint8Array;

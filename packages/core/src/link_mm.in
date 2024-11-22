@@ -31,6 +31,7 @@ Environment_NewDay = 0x800feaf4;
 Play_DrawHudButtons = 0x80117100;
 Audio_GetActiveSeqId = 0x801a8a50;
 Audio_QueueSeqCmd = 0x801a89a8;
+func_8012CF0C = 0x8012cf0c;
 
 Actor_ProcessInitChain = 0x800ffadc;
 
@@ -258,7 +259,8 @@ Message_ShouldAdvance = 0x80147624;
 Interface_LoadItemIconImpl = 0x80112b40;
 UpdateEquipment = 0x80123c90;
 
-Play_Update = 0x80168f64;
+Play_Main = 0x80168f64;
+Play_DrawMain = 0x80168090;
 
 Gfx_TexScroll = 0x8012cb4c;
 

@@ -12,6 +12,9 @@
 /local
 /.env
 /tmp
+/third_party
 
 /.vscode/settings.json
 /.nx
+/.pnpm-store
+/devcontainer-setup.local.sh

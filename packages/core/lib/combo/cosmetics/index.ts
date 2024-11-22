@@ -19,10 +19,10 @@ export { makeCosmetics } from './util';
 export { COSMETICS } from './data';
 export type { Cosmetics } from './type';
 
-export async function cosmeticsAssets(opts: Options) {
+export async function cosmeticsAssets() {
   return {
-    MASK_TUNIC: await png(opts, 'masks/tunic', 'bitmask'),
-    MASK_OOT_SHIELD_MIRROR: await png(opts, 'masks/oot_shield_mirror', 'bitmask'),
+    MASK_TUNIC: await png('masks/tunic', 'bitmask'),
+    MASK_OOT_SHIELD_MIRROR: await png('masks/oot_shield_mirror', 'bitmask'),
   }
 }
 
@@ -73,7 +73,7 @@ class CosmeticsPass {
 
   private asset(key: keyof Assets): Promise<Uint8Array> {
     if (this.assetsPromise === null) {
-      this.assetsPromise = cosmeticsAssets(this.opts);
+      this.assetsPromise = cosmeticsAssets();
     }
     return this.assetsPromise.then((assets) => assets[key]);
   }
@@ -245,7 +245,7 @@ class CosmeticsPass {
     }
 
     if (typeof path === 'string') {
-      if (!process.env.BROWSER) {
+      if (!process.env.__IS_BROWSER__) {
         return fs.promises.readFile(path);
       } else {
         throw new Error(`Cannot load buffers from path`);

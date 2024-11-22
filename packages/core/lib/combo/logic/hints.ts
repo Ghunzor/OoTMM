@@ -290,6 +290,10 @@ export class LogicPassHints {
     const region = world.regions[locD.id];
     const playerRegion = makeRegion(region, locD.world as number);
 
+    /* Special regions */
+    if (region === 'POCKET' || region === 'NONE')
+        return false;
+
     /* Ignored region */
     if (this.ignoredRegions.has(playerRegion)) {
       return false;
@@ -406,15 +410,19 @@ export class LogicPassHints {
       return -1;
     }
 
-    if (this.state.analysis.unreachable.has(loc) || this.state.analysis.useless.has(loc)) {
+    if (this.state.analysis.unreachable.has(loc)) {
       return 0;
     }
 
-    if (this.state.analysis.required.has(loc)) {
-      return 2;
+    if (this.state.analysis.useless.has(loc)) {
+      return 1;
     }
 
-    return 1;
+    if (this.state.analysis.required.has(loc)) {
+      return 3;
+    }
+
+    return 2;
   }
 
   private placeGossipItemExact(worldId: number, checkWorldId: number, checkHint: string, extra: number, isMoon: boolean) {
