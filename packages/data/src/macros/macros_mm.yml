@@ -135,11 +135,15 @@
 "glitch_equip_swap_anyage": "trick(GLITCH_MM_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && setting(agelessSticks)))"
 "glitch_ocarina_items": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish)"
 "glitch_megaflip": "trick(GLITCH_MM_MEGAFLIP) && has_explosives"
-"glitch_isg": "trick(GLITCH_MM_ISG) && has_one_hand_shield && ((has_explosives || has(MASK_KAMARO || has(MASK_BRENMEN)) && has_sticks || can_use_sword"
-"glitch_bomb_hover": "trick(GLITCH_MM_HOVER) && has_explosives || has_mask_blast && glitch_ISG"
-"glitch_actionswap": "trick(GLITCH_MM_ACTIONSWAP) && has_sticks && has_shield && has_bow"
+"glitch_isg": "trick(GLITCH_MM_ISG) && has_one_hand_shield && ((has_explosives && has_sword || has(MASK_KAMARO || has(MASK_BRENMEN)) && has_sticks || has(GREAT_FAIRY_SWORD) || can_hammer"
+#"glitch_bomb_hover": "trick(GLITCH_MM_HOVER)  && has_explosives || glitch_isg_from_interaction and has(BLAST_MASK)) && setting(blastMaskCooldown === 'instant')
+"glitch_actionswap": "trick(GLITCH_MM_ACTIONSWAP) && glitch)isg && has_shield && has_bow"
 "glitch_weirdshot": "trick(GLITCH_WEIRDSHOT) && can_hookshot && has_bombs" 
+"glitch_indexwarp": "trick(GLITCH_INDEXWARP) && has_weapon && glitch_bomb_hover 
+"glitch_isg_anywhere": "trick(GLITCH_ISG_ANYWHERE) && glitch_isg_from_interaction && (((( has(MASK_KAMARO || has(MASK_BRENMEN) && has_sticks || has(GREAT_FAIRY_SWORD) || can_hammer)) || bomb bag))"
+"glitch_isg_from_interaction": "trick(GLITCH_ISG_FROM_INTERACTION && has_shield has_sticks || has_weapon" 
 
+"glitch_bomb_hover": "trick(GLITCH_BOMB_HOVER) && glitch_isg_from_interaction && has(BLAST_MASK)) && setting(blastMaskCooldown === 'instant') || (glitch_isg_anywhere && has_bomb_bag))
 
 # Misc
 "has_spin_upgrade": "cond(setting(sharedSpinUpgrade), has(SHARED_SPIN_UPGRADE), has(SPIN_UPGRADE))"
