@@ -58,7 +58,16 @@ static int Horse_IsValidEntrance(u32 entranceId)
 void Horse_SpawnOverworldWrapper(PlayState* play, Player* link)
 {
     if (!Horse_IsValidEntrance(gSave.entrance))
+    {
         gHorseIsMounted = 0;
+        if(link->transformation != MM_PLAYER_FORM_FIERCE_DEITY)
+        {
+            if(gSave.info.itemEquips.sword)
+                gSave.info.itemEquips.buttonItems[0][0] = ITEM_MM_SWORD_KOKIRI + gSave.info.itemEquips.sword - 1;
+            else
+                gSave.info.itemEquips.buttonItems[0][0] = ITEM_NONE;
+        }
+    }
     Horse_SpawnOverworld(play, link);
 }
 

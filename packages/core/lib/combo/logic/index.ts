@@ -15,6 +15,7 @@ import { LogicPassAnalysisFoolish } from './analysis-foolish';
 import { LogicPassPrice } from './price';
 import { LogicPassItemProperties } from './item-properties';
 import { LogicPassMinimize } from './minimize';
+import { LogicPassAnalysisPaths } from './analysis-path';
 
 interface LogicPass<Out> {
   run: () => Out;
@@ -71,15 +72,14 @@ export const logic = async (monitor: Monitor, opts: Options) => {
 
   const data = pipeline(state)
     .apply(LogicPassAnalysis)
+    .apply(LogicPassAnalysisPaths)
     .apply(LogicPassAnalysisFoolish)
     .apply(LogicPassHints)
     .apply(LogicPassSpoiler)
     .apply(LogicPassHash)
     .exec();
 
-    const uuid = crypto.getRandomValues(new Uint8Array(16));
-
-    return { ...data, uuid };
+    return data;
 };
 
 export type LogicResult = Awaited<ReturnType<typeof logic>>;

@@ -5,8 +5,9 @@ import { Pathfinder, PathfinderState } from './pathfind';
 import { Monitor } from '../monitor';
 import { isLocationRenewable, Location, makeLocation, locationData } from './locations';
 import { ItemPlacement } from './solve';
-import { ItemHelpers, Items, PlayerItem, PlayerItems } from '../items';
+import { ItemHelpers, PlayerItem, PlayerItems } from '../items';
 import { ItemProperties } from './item-properties';
+import { AnalysisPath } from './analysis-path';
 
 export class LogicPassAnalysis {
   private pathfinder: Pathfinder;
@@ -16,11 +17,6 @@ export class LogicPassAnalysis {
   private uselessLocs = new Set<Location>();
   private unreachableLocs = new Set<Location>();
   private locations: Location[];
-  private paths: {
-    triforcePower: Set<Location>;
-    triforceCourage: Set<Location>;
-    triforceWisdom: Set<Location>;
-  };
 
   constructor(
     private readonly state: {
@@ -35,7 +31,6 @@ export class LogicPassAnalysis {
   ){
     this.pathfinder = new Pathfinder(this.state.worlds, this.state.settings, this.state.startingItems);
     this.locations = this.state.worlds.map((x, i) => [...x.locations].map(l => makeLocation(l, i))).flat();
-    this.paths = { triforcePower: new Set, triforceCourage: new Set, triforceWisdom: new Set };
   }
 
   private makeSpheresRaw(restrictedLocations?: Set<Location>) {
@@ -81,7 +76,7 @@ export class LogicPassAnalysis {
     const path = new Set<Location>();
     this.state.monitor.log(`Analysis - ${name}`);
     let count = 0;
-    const locations = new Set(this.spheres.flat());
+    const locations = new Set(this.requiredLocs);
     for (const loc of locations) {
       this.state.monitor.setProgress(count++, locations.size);
       const pathfinderState = this.pathfinder.run(null, { items: this.state.items, forbiddenLocations: new Set([loc]), recursive: true, stopAtGoal: true });
@@ -107,18 +102,6 @@ export class LogicPassAnalysis {
         }
         this.requiredlocsByItem.get(item)!.add(loc);
       }
-    }
-  }
-
-  private makePaths() {
-    if (this.state.settings.goal === 'triforce3') {
-      const locsPower = Array.from(this.state.items.entries()).filter(([_, item]) => item.item === Items.SHARED_TRIFORCE_POWER).map(([loc, _]) => loc);
-      const locsCourage = Array.from(this.state.items.entries()).filter(([_, item]) => item.item === Items.SHARED_TRIFORCE_COURAGE).map(([loc, _]) => loc);
-      const locsWisdom = Array.from(this.state.items.entries()).filter(([_, item]) => item.item === Items.SHARED_TRIFORCE_WISDOM).map(([loc, _]) => loc);
-
-      this.paths.triforcePower = this.makePath('Path of Power', x => locsPower.every(l => x.locations.has(l)));
-      this.paths.triforceCourage = this.makePath('Path of Courage', x => locsCourage.every(l => x.locations.has(l)));
-      this.paths.triforceWisdom = this.makePath('Path of Wisdom', x => locsWisdom.every(l => x.locations.has(l)));
     }
   }
 
@@ -160,7 +143,6 @@ export class LogicPassAnalysis {
     if (this.state.settings.logic !== 'none') {
       this.makeSpheres();
       this.makeRequiredLocs();
-      this.makePaths();
     }
     if (this.state.settings.logic === 'beatable') {
       this.makeUnreachable();
@@ -172,7 +154,7 @@ export class LogicPassAnalysis {
       required: this.requiredLocs,
       useless: this.uselessLocs,
       unreachable: this.unreachableLocs,
-      paths: this.paths,
+      paths: [] as AnalysisPath[],
     }
 
     return { analysis };

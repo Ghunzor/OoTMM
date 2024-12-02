@@ -288,7 +288,8 @@ void Player_Action_CastingSpell(Player* this, PlayState* play)
                 fw->data = 40;
 
                 /* Copy Game Over / Soar to Entrance respawn data. */
-                gCustomSave.fwRespawnTop[gOotSave.age] = gSaveContext.respawn[RESPAWN_MODE_TOP];
+                memcpy(&gCustomSave.fwRespawnTop[gOotSave.age], &gSaveContext.respawn[RESPAWN_MODE_TOP], sizeof(RespawnData));
+                memcpy(&gCustomSave.fwRespawnDungeonEntrance[gOotSave.age], &gSharedCustomSave.respawn[CUSTOM_RESPAWN_MODE_DUNGEON_ENTRANCE], sizeof(RespawnData));
 
                 this->av2.actionVar2 = 2;
             }
@@ -395,6 +396,10 @@ void Player_Action_FaroresWindText(Player* this, PlayState* play)
             play->nextEntrance = gSaveContext.respawn[RESPAWN_MODE_HUMAN].entrance;
             play->transitionType = TRANS_TYPE_FADE_WHITE_FAST;
             gNoTimeFlow = 0;
+
+            /* Restore Game Over / Soar to Entrance respawn data. */
+            memcpy(&gSaveContext.respawn[RESPAWN_MODE_TOP], &gCustomSave.fwRespawnTop[gOotSave.age], sizeof(RespawnData));
+            memcpy(&gSharedCustomSave.respawn[CUSTOM_RESPAWN_MODE_DUNGEON_ENTRANCE], &gCustomSave.fwRespawnDungeonEntrance[gOotSave.age], sizeof(RespawnData));
 
             /* TODO cancel timers? */
 
@@ -680,9 +685,6 @@ void Player_AfterInit(PlayState* play)
 
     if (gSaveContext.respawnFlag == 8)
     {
-        /* Restore Game Over / Soar to Entrance respawn data. */
-        gSaveContext.respawn[RESPAWN_MODE_TOP] = gCustomSave.fwRespawnTop[gOotSave.age];
-
         Player_InitFaroresWindRespawn(play, player);
     }
 }
@@ -1056,9 +1058,9 @@ static Color_RGB8 sTunicColors[4] = {
     { 0, 60, 100 },  /* PLAYER_TUNIC_ZORA */
 };
 
-COSMETIC(MM_COLOR_TUNIC_KOKIRI, sTunicColors[0]);
-COSMETIC(MM_COLOR_TUNIC_GORON, sTunicColors[2]);
-COSMETIC(MM_COLOR_TUNIC_ZORA, sTunicColors[3]);
+EXPORT_SYMBOL(MM_COLOR_TUNIC_KOKIRI, sTunicColors[0]);
+EXPORT_SYMBOL(MM_COLOR_TUNIC_GORON, sTunicColors[2]);
+EXPORT_SYMBOL(MM_COLOR_TUNIC_ZORA, sTunicColors[3]);
 
 void Player_SkelAnime_DrawFlexLod(PlayState* play, void** skeleton, Vec3s* jointTable, s32 dListCount, OverrideLimbDrawOpa overrideLimbDraw, PostLimbDrawOpa postLimbDraw, Player* player, s32 lod)
 {

@@ -55,13 +55,23 @@ export const SETTINGS = [{
   cond: (x: any) => x.mode === 'multi',
   default: 1
 }, {
+  key: 'teams',
+  name: 'Teams',
+  category: 'main',
+  type: 'number',
+  description: 'For multiplayers, how many teams will compete. Players in different teams will play the same seed but will not interact with each other.',
+  min: 1,
+  max: 64,
+  cond: (x: any) => x.mode !== 'single',
+  default: 1
+}, {
   key: 'distinctWorlds',
   name: 'Distinct Worlds',
   category: 'main',
   type: 'boolean',
   description: 'For multiworld, with settings that involve randomness, should the worlds have distinct properties (ER, MQ, price rando...).',
   cond: (x: any) => x.mode === 'multi',
-  default: false
+  default: true
 }, {
   key: 'goal',
   name: 'Goal',
@@ -151,6 +161,34 @@ export const SETTINGS = [{
   type: 'boolean',
   description: 'Make the region hints more granular: Makes Goron Racetrack and Butler Race into their own regions, and splits Ganon Castle/Tower and Normal/Inverted Stone Tower Temple.',
   default: false
+}, {
+  key: 'hintPathDungeons',
+  name: 'Hint Path to Dungeons',
+  category: 'hints',
+  type: 'boolean',
+  description: 'Enable WotH hints to be upgraded to dungeons paths when appropriate.',
+  default: false
+}, {
+  key: 'hintPathBoss',
+  name: 'Hint Path to Boss',
+  category: 'hints',
+  type: 'boolean',
+  description: 'Enable WotH hints to be upgraded to boss paths when appropriate.',
+  default: false
+}, {
+  key: 'hintPathEndBoss',
+  name: 'Hint Path to End Boss',
+  category: 'hints',
+  type: 'boolean',
+  description: 'Enable WotH hints to be upgraded to end boss paths when appropriate.',
+  default: false
+}, {
+  key: 'hintPathEvents',
+  name: 'Hint Path to Events',
+  category: 'hints',
+  type: 'boolean',
+  description: 'Enable WotH hints to be upgraded to events paths when appropriate.',
+  default: false,
 }, {
   key: 'hintImportance',
   name: 'Hint Importance',
@@ -1105,6 +1143,19 @@ export const SETTINGS = [{
   ],
   default: 'bossBeaten',
   cond: hasMM,
+}, {
+  key: 'regionState',
+  name: 'Region State Behavior',
+  category: 'main.events',
+  type: 'enum',
+  description: 'Controls what is required to change the region state.',
+  values: [
+    { value: 'dungeonBeaten', name: 'Dungeon Beaten', description: 'Enabled when the dungeon is beaten.' },
+    //{ value: 'bossBeaten', name: 'Boss Beaten', description: 'Enabled when the boss is beaten.' },
+    { value: 'reward', name: 'Rewards', description: 'Enabled when the matching dungeon reward is obtained' },
+    { value: 'free', name: 'Free', description: 'Always enabled' },
+  ],
+  default: 'dungeonBeaten',
 }, {
   key: 'freeScarecrowOot',
   name: 'Free Scarecrow (OoT)',
