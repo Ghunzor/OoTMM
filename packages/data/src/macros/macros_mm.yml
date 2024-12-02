@@ -144,7 +144,7 @@
 "glitch_isg_from_interaction": "trick(GLITCH_ISG_FROM_INTERACTION && has_shield has_sticks || has_weapon" 
 "glitch_seamwalk": "trick(GLITCH_SEAMWALK)"
 "glitch_qpq": "trick(GLITCH_QPA) && has_sticks && has_bombs"
-"glitch_water_lights" "trick(GLITCH_WATER_LIGHTS) && has_water"
+"glitch_water_lights": "trick(GLITCH_WATER_LIGHTS) && has_water"
 
 # Misc
 "has_spin_upgrade": "cond(setting(sharedSpinUpgrade), has(SHARED_SPIN_UPGRADE), has(SPIN_UPGRADE))"
