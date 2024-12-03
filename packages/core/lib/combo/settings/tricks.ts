@@ -743,6 +743,55 @@ export const TRICKS: Tricks = {
     name: "Twinmold with Bow (MM)",
     tooltip: "Defeat Twinmold using only the Bow.",
   },
+  GLITCH_MM_MEGAFLIP: {
+    game: 'mm',
+    name: "Megaflip (MM)",
+    glitch: true,
+  },
+  GLITCH_MM_ACTIONSWAP: {
+    game: 'mm',
+    name: "Action Swap",
+    glitch: true,
+  },
+  GLITCH_MM_WEIRDSHOT: {
+    game: 'mm',
+    name: 'Weirdshot',
+    glitch: true,
+  },
+  GLITCH_MM_BOMB_HOVER: {
+    game: 'mm',
+    name: "Bomb Hover",
+    glitch: true,
+  },
+  GLITCH_MM_BLAST_HOVER: {
+    game: 'mm',
+    name: "Blast Mask Hover",
+    glitch: true,
+  },
+  GLITCH_MM_ISG_ANYWHERE: {
+    game: 'mm',
+    name: "ISG Anywhere",
+    glitch: true,
+  },
+  GLITCH_MM_ISG_INTERACTION: {
+    game: 'mm',
+    name: "ISG from Interactions",
+    glitch: true,
+  },
+  GLITCH_MM_SEAMWALK: {
+    game: 'mm',
+    name: "Seamwalks",
+    glitch: true,
+  },
+  GLITCH_MM_QPA: {
+    game: 'mm',
+    name: "Quick Put Away",
+    glitch: true,
+  },
+  GLITCH_MM_WATER_LIGHTS: {
+    game: 'mm',
+    name: "Activating Sunswitches with Water",
+    glitch: true,
 };
 
 export const DEFAULT_TRICKS: TrickKey[] = ['OOT_NIGHT_GS'];
