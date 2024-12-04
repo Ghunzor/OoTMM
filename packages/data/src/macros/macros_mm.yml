@@ -133,18 +133,19 @@
 # Glitches
 #"glitch_equip_swap": "trick(GLITCH_MM_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && (is_child || setting(agelessSticks))))"
 #"glitch_equip_swap_anyage": "trick(GLITCH_MM_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && setting(agelessSticks)))"
-"glitch_ocarina_items": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish) || ("
-"glitch_megaflip": "trick(GLITCH_MM_MEGAFLIP) && has_bombs "
+"glitch_ocarina_items": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish) || (has_bombs && has_cutscene_item)"
+"glitch_megaflip": "trick(GLITCH_MM_MEGAFLIP) && has_bombs"
 "glitch_actionswap": "trick(GLITCH_MM_ACTIONSWAP) && has_shield && has_stick && (has_bow || has_hookshot)"
-"glitch_weirdshot": "trick(GLITCH_WEIRDSHOT) && can_hookshot && has_bombs" 
+"glitch_weirdshot": "trick(GLITCH_MM_WEIRDSHOT) && can_hookshot && has_bombs" 
 "glitch_bomb_hover": "trick(GLITCH_MM_BOMB_HOVER) && (glitch_isg_from_interaction || glitch_isg_anywhere) && (has_bombs || has_bombchu || (has_mask_blast && setting(blastMaskCooldown, instant))"
 "glitch_blast_hover": "trick(GLITCH_MM_BLAST_HOVER) && (glitch_isg_from_interaction || glitch_isg_anywhere) && (has_mask_blast && setting(blastMaskCooldown, instant))"
 #"glitch_indexwarp": "trick(GLITCH_INDEXWARP) && has_weapon && glitch_bomb_hover | needs fixing
 "glitch_isg_anywhere": "trick(GLITCH_ISG_ANYWHERE) && glitch_isg_from_interaction && (((( has(MASK_KAMARO || has(MASK_BRENMEN) && has_sticks || has(GREAT_FAIRY_SWORD) || can_hammer)) || bomb bag))"
 "glitch_isg_from_interaction": "trick(GLITCH_ISG_FROM_INTERACTION) && has_shield has_sticks || has_weapon" 
-"glitch_seamwalk": "trick(GLITCH_SEAMWALK)"
-"glitch_qpa": "trick(GLITCH_QPA) && has_sticks"
-"glitch_water_lights": "trick(GLITCH_WATER_LIGHTS) && has_water"
+"glitch_seamwalk": "trick(GLITCH_MM_SEAMWALK)"
+"glitch_qpa": "trick(GLITCH_MM_QPA) && has_sticks"
+"glitch_water_lights": "trick(GLITCH_MM_WATER_LIGHTS) && has_water"
+"has_cutscene_item": "has_paper || has_beans || has(PENDANT_OF_MEMORIES) || ((has_mask_zora || has_mask_goron || has(MASK_DEKU)) && !setting(fastMasks))" 
 
 # Misc
 "has_spin_upgrade": "cond(setting(sharedSpinUpgrade), has(SHARED_SPIN_UPGRADE), has(SPIN_UPGRADE))"
