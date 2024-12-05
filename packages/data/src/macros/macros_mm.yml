@@ -132,7 +132,11 @@
 # Glitches
 #"glitch_equip_swap": "trick(GLITCH_MM_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && (is_child || setting(agelessSticks))))"
 #"glitch_equip_swap_anyage": "trick(GLITCH_MM_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && setting(agelessSticks)))"
-"glitch_ocarina_items": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish) || (has_bombs && has_cutscene_item)"
+#"glitch_ocarina_items": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish) || (has_bombs && has_cutscene_item)"
+"glitch_ocarina_items_deku": "trick(GLITCH_MM_OCARINA_ITEMS) && can_use_deku_bubble && (has_bugs || has_fish)"
+"glitch_ocarina_items_goron": "trick(GLITCH_MM_OCARINA_ITEMS) && has_mask_goron && (has_bugs || has_fish)"
+"glitch_ocarina_items_zora": "trick(GLITCH_MM_OCARINA_ITEMS) && has_mask_zora && (has_bugs || has_fish)"
+"glitch_ocarina_items_any": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish) && ((can_use_deku_bubble || has_mask_goron || has_mask_zora)) || ((has_stick || has_weapon || (has_bombs && has_cutscene_item))"
 "glitch_megaflip": "trick(GLITCH_MM_MEGAFLIP) && has_bombs"
 "glitch_actionswap": "trick(GLITCH_MM_ACTIONSWAP) && has_shield && has_stick && (has_bow || has_hookshot)"
 "glitch_weirdshot_short": "trick(GLITCH_MM_WEIRDSHOT_SHORT) && can_hookshot_short && has_bombs" 
