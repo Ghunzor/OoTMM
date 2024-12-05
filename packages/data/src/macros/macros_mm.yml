@@ -135,6 +135,7 @@
 "glitch_ocarina_items": "trick(GLITCH_MM_OCARINA_ITEMS) && (has_bugs || has_fish) || (has_bombs && has_cutscene_item)"
 "glitch_megaflip": "trick(GLITCH_MM_MEGAFLIP) && has_bombs"
 "glitch_actionswap": "trick(GLITCH_MM_ACTIONSWAP) && has_shield && has_stick && (has_bow || has_hookshot)"
+"glitch_weirdshot_short": "trick(GLITCH_MM_WEIRDSHOT_SHORT) && can_hookshot_short && has_bombs" 
 "glitch_weirdshot": "trick(GLITCH_MM_WEIRDSHOT) && can_hookshot && has_bombs" 
 "glitch_bomb_hover": "trick(GLITCH_MM_BOMB_HOVER) && (glitch_isg_from_interaction || glitch_isg_anywhere) && (has_bombs || has_bombchu || (has_mask_blast && setting(blastMaskCooldown, instant))"
 "glitch_blast_hover": "trick(GLITCH_MM_BLAST_HOVER) && (glitch_isg_from_interaction || glitch_isg_anywhere) && (has_mask_blast && setting(blastMaskCooldown, instant))"
@@ -151,7 +152,7 @@
 "keaton_grass_easy": "has_sword && has_magic"
 "keaton_grass_hard": "keaton_grass_easy && (has_spin_upgrade || has(GREAT_FAIRY_SWORD) || has_sword_level(3))"
 
-"break_hive": "has_weapon_range"
+"break_hive": "has_weapon_range || glitch_bomb_hover || glitch_blast_hover"
 
 "has_sword_level(n)": "cond(setting(sharedSwords), has(SHARED_SWORD, n), has(SWORD, n))"
 "has_b_sword": "has_sword_level(1)"
