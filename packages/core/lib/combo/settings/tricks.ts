@@ -765,9 +765,16 @@ export const TRICKS: Tricks = {
   },
   GLITCH_MM_WEIRDSHOT: {
     game: 'mm',
-    name: 'Weirdshot',
+    name: "Weirdshot",
     glitch: true,
     tooltip: "Changing Link's camera position to be able to hook things that are obstructed",
+    linkVideo: 'https://youtu.be/ASO5ejq4YR0?t=1460',
+  },
+  GLITCH_MM_WEIRDSHOT_SHORT: {
+    game: 'mm',
+    name: "Short Weirdshot",
+    glitch: true,
+    tooltip: "Changing Link's camera position to be able to hook things that are obstructed but at short distance",
     linkVideo: 'https://youtu.be/ASO5ejq4YR0?t=1460',
   },
   GLITCH_MM_BOMB_HOVER: {
