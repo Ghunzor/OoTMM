@@ -749,6 +749,12 @@ export const TRICKS: Tricks = {
     name: "Twinmold with Bow (MM)",
     tooltip: "Defeat Twinmold using only the Bow.",
   },
+  GLITCH_MM_OCARINA_ITEMS: {
+    game: 'mm',
+    name: "Ocarina of Items",
+    tooltip: "Allowing the Player to play songs without Ocarina and by any form of Link",
+    linkVideo: 'https://youtu.be/ASO5ejq4YR0?t=3527',
+  },
   GLITCH_MM_MEGAFLIP: {
     game: 'mm',
     name: "Megaflip (MM)",
