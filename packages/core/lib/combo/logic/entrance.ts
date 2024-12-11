@@ -2,7 +2,7 @@ import { ENTRANCES } from '@ootmm/data';
 
 import { Random, sample } from '../random';
 import { Settings } from '../settings';
-import { DUNGEONS_REGIONS, ExprMap, World, WorldArea, cloneWorld, BOSS_INDEX_BY_DUNGEON } from './world';
+import { DUNGEONS_REGIONS, World, WorldArea, cloneWorld, BOSS_INDEX_BY_DUNGEON } from './world';
 import { Pathfinder } from './pathfind';
 import { Monitor } from '../monitor';
 import { LogicEntranceError, LogicError } from './error';
@@ -270,9 +270,6 @@ class WorldShuffler {
   }
 
   private validateAgeTemple(world: World) {
-    if (!['ootmm', 'oot'].includes(this.settings.games))
-      return;
-
     const newWorld = cloneWorld(world);
     const a = newWorld.areas['OOT SPAWN'];
     if (this.settings.startingAge === 'child') {
@@ -416,7 +413,7 @@ class WorldShuffler {
     }
 
     /* Check ToT access */
-    if (!this.validateAgeTemple(newWorld)) {
+    if (['ootmm', 'oot'].includes(this.settings.games) && !this.validateAgeTemple(newWorld)) {
       return false;
     }
 
